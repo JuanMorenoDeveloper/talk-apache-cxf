@@ -47,30 +47,187 @@
 </section>
 <section id="agenda" class="slide level2">
 <h2>Agenda</h2>
-</section>
-<section id="introduction" class="slide level2">
-<h2>Introduction</h2>
-</section>
-<section id="architecture-overview" class="slide level2">
-<h2>Architecture Overview</h2>
-</section>
-<section id="main-cryptography-concepts" class="slide level2">
-<h2>Main Cryptography Concepts</h2>
 <ul>
-<li>Symetric / Asymetric</li>
+<li>Cryptography concepts</li>
+<li>Apache CXF</li>
+<li>Apache CXF - Integration with Spring Boot</li>
+<li>Developing a client/endpoint</li>
+<li>WS Security</li>
+<li>Testing</li>
 </ul>
 </section>
-<section id="developing-a-client" class="slide level2">
-<h2>Developing a Client</h2>
+<section id="cryptography" class="slide level2">
+<h2>Cryptography</h2>
+<p>Cryptography is <strong>a method of protecting data and
+communications using codes and digital keys</strong> to ensure that the
+information is delivered untampered to the intended sender for further
+processing.</p>
+<p><img data-src="images/cryptographic-key.png" /></p>
 </section>
-<section id="developing-an-endpoing" class="slide level2">
-<h2>Developing an Endpoing</h2>
+<section id="cryptography---digital-signatures" class="slide level2">
+<h2>Cryptography - Digital Signatures</h2>
+<p>A digital signature is a cryptographic means through which one can
+<strong>verify</strong> a document’s <strong>origin</strong>, the
+<strong>sender’s identity</strong>, the time, and date a document was
+signed or sent, etc.</p>
+<p><img data-src="images/wax-stamp.jpg" /></p>
+</section>
+<section id="cryptography---plaintextciphertext" class="slide level2">
+<h2>Cryptography - Plaintext/Ciphertext</h2>
+<p>As cryptography operates with data, this can be either in
+<strong>plaintext</strong> (cleartext) or <strong>ciphertext</strong>
+(cryptogram).</p>
+<p>Plaintext data means that the message is in natural format, readable
+to an attacker. Ciphertext data means that the message is in an
+unreadable format to the attacker but readable to the intended
+recipient.</p>
+</section>
+<section id="cryptography---encryptiondecryption" class="slide level2">
+<h2>Cryptography - Encryption/Decryption</h2>
+<p>You can convert the message from plaintext to ciphertext using the
+process of <strong>encryption</strong>. Similarly, you can convert
+ciphertext into plaintext via <strong>decryption</strong> by using a
+cryptographic algorithm and key used to make the original message.</p>
+</section>
+<section id="cryptography---symmetric-encryptiondecryption"
+class="slide level2">
+<h2>Cryptography - Symmetric Encryption/Decryption</h2>
+<p>Symmetric or shared key encryption is a method where both parties
+share a key, kept secret by both parties. For example, sender A can
+encrypt a message with a shared key, then receiver B can decrypt the
+encrypted message only with that key.</p>
+</section>
+<section id="cryptography---symmetric-encryptiondecryption-1"
+class="slide level2">
+<h2>Cryptography - Symmetric Encryption/Decryption</h2>
+<p><img data-src="images/symmetric_encryption.png" /></p>
+</section>
+<section id="cryptography---asymmetric-encryptiondecryption"
+class="slide level2">
+<h2>Cryptography - Asymmetric Encryption/Decryption</h2>
+<p>Asymmetrical encryption uses a pair of mathematical related keys, one
+for encryption and the other for decryption. With public key
+cryptography, a user has a pair of public and private keys.</p>
+</section>
+<section id="cryptography---asymmetric-encryptiondecryption---keys"
+class="slide level2">
+<h2>Cryptography - Asymmetric Encryption/Decryption - Keys</h2>
+<p>These are generated using a large prime number and a key function.
+The keys are related mathematically, but cannot be derived from one
+another.</p>
+<p><img data-src="images/250px-Public_key_making.png" /></p>
+</section>
+<section id="cryptography---asymmetric-encryptiondecryption-1"
+class="slide level2">
+<h2>Cryptography - Asymmetric Encryption/Decryption</h2>
+<p>With these keys we can encrypt messages. For example, if Bob wants to
+send a message to Alice, he can encrypt a message using her public key.
+Alice can then decrypt this message using her private key. Only Alice
+can decrypt this message as she is the only one with the private
+key.</p>
+</section>
+<section id="cryptography---asymmetric-encryptiondecryption-2"
+class="slide level2">
+<h2>Cryptography - Asymmetric Encryption/Decryption</h2>
+<p><img data-src="images/Public_key_encryption.png" /></p>
+</section>
+<section id="cryptography---asymmetric-signing" class="slide level2">
+<h2>Cryptography - Asymmetric Signing</h2>
+<p>Messages can also be signed. This allows you to ensure the
+authenticity of the message. If Alice wants to send a message to Bob,
+and Bob wants to be sure that it is from Alice, Alice can sign the
+message using her private key. Bob can then verify that the message is
+from Alice by using her public key.</p>
+</section>
+<section id="cryptography---asymmetric-signing-1" class="slide level2">
+<h2>Cryptography - Asymmetric Signing</h2>
+<p><img data-src="images/280px-Public_key_signing.png" /></p>
+</section>
+<section id="key-and-certificate-management-tool---keytool"
+class="slide level2">
+<h2>Key and Certificate Management Tool - Keytool</h2>
+<ul>
+<li>Java includes the keytool utility in its releases.</li>
+<li>We can use <code>keytool</code> to manage keys and certificates and
+store them in a keystore.</li>
+<li>The <code>keytool</code> command allows us to create self-signed
+certificates and show information about the keystore</li>
+</ul>
+</section>
+<section id="apache-cxf---introduction" class="slide level2">
+<h2>Apache CXF - Introduction</h2>
+<ul>
+<li>Apache CXF is an open source services framework.</li>
+<li>It supports multiple APIs like JAX-WS, JAX-RS.</li>
+<li>Compatible with protocols like SOAP, XML/HTTP, RESTful HTTP, and
+others</li>
+</ul>
+</section>
+<section id="apache-cxf---spring-boot-integration" class="slide level2">
+<h2>Apache CXF - Spring Boot Integration</h2>
+<p><strong>Spring Boot</strong> makes it easy to create stand-alone,
+production-grade Spring based Applications that you can “just run”.</p>
+<p>To integrate CXF with Spring boot we need to add the following
+dependencies:
+<em>spring-boot-starter-web</em>,<em>cxf-spring-boot-starter-jaxws</em>,
+<em>cxf-rt-transports-http</em>, <em>cxf-rt-ws-security</em> and
+<em>cxf-rt-features-logging</em>.</p>
+</section>
+<section id="developing-a-soap-client---model-generation-wsdl-first"
+class="slide level2">
+<h2>Developing a SOAP Client - Model generation (WSDL-first)</h2>
+<ol type="1">
+<li>Download the WSDL file and place it in the resources’ folder.</li>
+<li>Use the maven <em>cxf-codegen-plugin</em></li>
+</ol>
+<ul>
+<li>Configure the <em>bindingFile</em> for model generation.</li>
+<li>Configure the wsdlLocation.</li>
+<li>Set the output path with <em>extraargs</em></li>
+</ul>
+<ol start="3" type="1">
+<li>Use the <em>build-helper-maven-plugin</em> to add the generated
+source to the project.</li>
+</ol>
+</section>
+<section id="developing-a-soap-client---spring-boot-configuration"
+class="slide level2">
+<h2>Developing a SOAP Client - Spring Boot Configuration</h2>
+<ol type="1">
+<li>Define in the <code>@Configuration</code> class a <code>@Bean</code>
+with the client implementation. It’s the class with the annotation
+<code>@WebServiceClient</code>.</li>
+<li>Create a <code>JaxWsProxyFactoryBean</code> for the client
+class.</li>
+<li>Assign Endpoint URL, and assign the Interceptors as needed.</li>
+</ol>
+</section>
+<section id="developing-an-endpoint---spring-boot-configuration"
+class="slide level2">
+<h2>Developing an Endpoint - Spring Boot Configuration</h2>
+<p>If the WSDL already exists, follow the <em>WSDL-first</em> steps
+plus:</p>
+<ol type="1">
+<li>Define in the <code>@Configuration</code> class an
+<code>javax.xml.ws.Endpoint</code> implementation. It’s the interface
+with the annotation <code>@WebService</code>.</li>
+<li>Assign Endpoint URL, and Interceptors.</li>
+</ol>
 </section>
 <section id="how-to-use-ws-security" class="slide level2">
 <h2>How to use WS-Security?</h2>
 </section>
 <section id="testing" class="slide level2">
 <h2>Testing</h2>
+</section>
+<section id="references" class="slide level2">
+<h2>References</h2>
+<ul>
+<li><a href="https://dev.java/learn/security/intro/">Introduction to
+Java Encryption/Decryption - Dev.java</a></li>
+<li><a href="https://cxf.apache.org/docs/ws-security.html">Apache CXF –
+WS-Security</a></li>
+</ul>
 </section></section>
     </div>
   </div>
