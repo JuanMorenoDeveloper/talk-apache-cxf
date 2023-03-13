@@ -1,20 +1,15 @@
-<!DOCTYPE html>
-<html>
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-  <meta charset="utf-8">
-  <meta name="generator" content="pandoc">
-  <meta name="author" content="Juan Moreno">
-  <meta name="dcterms.date" content="2023-03-03">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <meta name="author" content="Juan Moreno" />
+  <meta name="date" content="2023-03-03" />
   <title>Apache CXF</title>
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/reset.css">
-  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/reveal.css">
-  <style>
-    .reveal .sourceCode {  /* see #7635 */
-      overflow: visible;
-    }
+  <style type="text/css">
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
     div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -28,212 +23,212 @@
     }
     .display.math{display: block; text-align: center; margin: 0.5rem auto;}
   </style>
-  <link rel="stylesheet" href="https://unpkg.com/reveal.js@^4//dist/theme/white.css" id="theme">
+  <link rel="stylesheet" type="text/css" media="screen, projection, print"
+    href="https://www.w3.org/Talks/Tools/Slidy2/styles/slidy.css" />
+  <script src="https://www.w3.org/Talks/Tools/Slidy2/scripts/slidy.js"
+    charset="utf-8" type="text/javascript"></script>
 </head>
 <body>
-  <div class="reveal">
-    <div class="slides">
-
-<section id="title-slide">
+<div class="slide titlepage">
   <h1 class="title">Apache CXF</h1>
-  <p class="author">Juan Moreno</p>
+  <p class="author">
+Juan Moreno
+  </p>
   <p class="date">March 03, 2023</p>
-</section>
-
-<section>
-<section id="apache-cxf" class="title-slide slide level1">
+</div>
+<div id="apache-cxf" class="title-slide slide section level1">
 <h1>Apache CXF</h1>
 
-</section>
-<section id="agenda" class="slide level2">
-<h2>Agenda</h2>
-</section>
-<section id="introduction" class="slide level2">
-<h2>Introduction</h2>
-</section>
-<section id="architecture-overview" class="slide level2">
-<h2>Architecture Overview</h2>
-</section>
-<section id="main-cryptography-concepts" class="slide level2">
-<h2>Main Cryptography Concepts</h2>
+</div>
+<div id="agenda" class="slide section level2">
+<h1>Agenda</h1>
 <ul>
-<li>Symetric / Asymetric</li>
+<li>Cryptography concepts</li>
+<li>Apache CXF</li>
+<li>Apache CXF - Integration with Spring Boot</li>
+<li>Developing a client/endpoint</li>
+<li>WS Security</li>
+<li>Testing</li>
 </ul>
-</section>
-<section id="developing-a-client" class="slide level2">
-<h2>Developing a Client</h2>
-</section>
-<section id="developing-an-endpoing" class="slide level2">
-<h2>Developing an Endpoing</h2>
-</section>
-<section id="how-to-use-ws-security" class="slide level2">
-<h2>How to use WS-Security?</h2>
-</section>
-<section id="testing" class="slide level2">
-<h2>Testing</h2>
-</section></section>
-    </div>
-  </div>
-
-  <script src="https://unpkg.com/reveal.js@^4//dist/reveal.js"></script>
-
-  <!-- reveal.js plugins -->
-  <script src="https://unpkg.com/reveal.js@^4//plugin/notes/notes.js"></script>
-  <script src="https://unpkg.com/reveal.js@^4//plugin/search/search.js"></script>
-  <script src="https://unpkg.com/reveal.js@^4//plugin/zoom/zoom.js"></script>
-
-  <script>
-
-      // Full list of configuration options available at:
-      // https://revealjs.com/config/
-      Reveal.initialize({
-        // Display controls in the bottom right corner
-        controls: true,
-
-        // Help the user learn the controls by providing hints, for example by
-        // bouncing the down arrow when they first encounter a vertical slide
-        controlsTutorial: true,
-
-        // Determines where controls appear, "edges" or "bottom-right"
-        controlsLayout: 'bottom-right',
-
-        // Visibility rule for backwards navigation arrows; "faded", "hidden"
-        // or "visible"
-        controlsBackArrows: 'faded',
-
-        // Display a presentation progress bar
-        progress: true,
-
-        // Display the page number of the current slide
-        slideNumber: false,
-
-        // 'all', 'print', or 'speaker'
-        showSlideNumber: 'all',
-
-        // Add the current slide number to the URL hash so that reloading the
-        // page/copying the URL will return you to the same slide
-        hash: true,
-
-        // Start with 1 for the hash rather than 0
-        hashOneBasedIndex: false,
-
-        // Flags if we should monitor the hash and change slides accordingly
-        respondToHashChanges: true,
-
-        // Push each slide change to the browser history
-        history: false,
-
-        // Enable keyboard shortcuts for navigation
-        keyboard: true,
-
-        // Enable the slide overview mode
-        overview: true,
-
-        // Disables the default reveal.js slide layout (scaling and centering)
-        // so that you can use custom CSS layout
-        disableLayout: false,
-
-        // Vertical centering of slides
-        center: true,
-
-        // Enables touch navigation on devices with touch input
-        touch: true,
-
-        // Loop the presentation
-        loop: false,
-
-        // Change the presentation direction to be RTL
-        rtl: false,
-
-        // see https://revealjs.com/vertical-slides/#navigation-mode
-        navigationMode: 'default',
-
-        // Randomizes the order of slides each time the presentation loads
-        shuffle: false,
-
-        // Turns fragments on and off globally
-        fragments: true,
-
-        // Flags whether to include the current fragment in the URL,
-        // so that reloading brings you to the same fragment position
-        fragmentInURL: true,
-
-        // Flags if the presentation is running in an embedded mode,
-        // i.e. contained within a limited portion of the screen
-        embedded: false,
-
-        // Flags if we should show a help overlay when the questionmark
-        // key is pressed
-        help: true,
-
-        // Flags if it should be possible to pause the presentation (blackout)
-        pause: true,
-
-        // Flags if speaker notes should be visible to all viewers
-        showNotes: false,
-
-        // Global override for autoplaying embedded media (null/true/false)
-        autoPlayMedia: null,
-
-        // Global override for preloading lazy-loaded iframes (null/true/false)
-        preloadIframes: null,
-
-        // Number of milliseconds between automatically proceeding to the
-        // next slide, disabled when set to 0, this value can be overwritten
-        // by using a data-autoslide attribute on your slides
-        autoSlide: 0,
-
-        // Stop auto-sliding after user input
-        autoSlideStoppable: true,
-
-        // Use this method for navigation when auto-sliding
-        autoSlideMethod: null,
-
-        // Specify the average time in seconds that you think you will spend
-        // presenting each slide. This is used to show a pacing timer in the
-        // speaker view
-        defaultTiming: null,
-
-        // Enable slide navigation via mouse wheel
-        mouseWheel: false,
-
-        // The display mode that will be used to show slides
-        display: 'block',
-
-        // Hide cursor if inactive
-        hideInactiveCursor: true,
-
-        // Time before the cursor is hidden (in ms)
-        hideCursorTime: 5000,
-
-        // Opens links in an iframe preview overlay
-        previewLinks: false,
-
-        // Transition style (none/fade/slide/convex/concave/zoom)
-        transition: 'slide',
-
-        // Transition speed (default/fast/slow)
-        transitionSpeed: 'default',
-
-        // Transition style for full page slide backgrounds
-        // (none/fade/slide/convex/concave/zoom)
-        backgroundTransition: 'fade',
-
-        // Number of slides away from the current that are visible
-        viewDistance: 3,
-
-        // Number of slides away from the current that are visible on mobile
-        // devices. It is advisable to set this to a lower number than
-        // viewDistance in order to save resources.
-        mobileViewDistance: 2,
-
-        // reveal.js plugins
-        plugins: [
-          RevealNotes,
-          RevealSearch,
-          RevealZoom
-        ]
-      });
-    </script>
-    </body>
+</div>
+<div id="cryptography" class="slide section level2">
+<h1>Cryptography</h1>
+<p>Cryptography is <strong>a method of protecting data and
+communications using codes and digital keys</strong> to ensure that the
+information is delivered untampered to the intended sender for further
+processing.</p>
+<p><img src="images/cryptographic-key.png" /></p>
+</div>
+<div id="cryptography---digital-signatures"
+class="slide section level2">
+<h1>Cryptography - Digital Signatures</h1>
+<p>A digital signature is a cryptographic means through which one can
+<strong>verify</strong> a document’s <strong>origin</strong>, the
+<strong>sender’s identity</strong>, the time, and date a document was
+signed or sent, etc.</p>
+<p><img src="images/wax-stamp.jpg" /></p>
+</div>
+<div id="cryptography---plaintextciphertext"
+class="slide section level2">
+<h1>Cryptography - Plaintext/Ciphertext</h1>
+<p>As cryptography operates with data, this can be either in
+<strong>plaintext</strong> (cleartext) or <strong>ciphertext</strong>
+(cryptogram).</p>
+<p>Plaintext data means that the message is in natural format, readable
+to an attacker. Ciphertext data means that the message is in an
+unreadable format to the attacker but readable to the intended
+recipient.</p>
+</div>
+<div id="cryptography---encryptiondecryption"
+class="slide section level2">
+<h1>Cryptography - Encryption/Decryption</h1>
+<p>You can convert the message from plaintext to ciphertext using the
+process of <strong>encryption</strong>. Similarly, you can convert
+ciphertext into plaintext via <strong>decryption</strong> by using a
+cryptographic algorithm and key used to make the original message.</p>
+</div>
+<div id="cryptography---symmetric-encryptiondecryption"
+class="slide section level2">
+<h1>Cryptography - Symmetric Encryption/Decryption</h1>
+<p>Symmetric or shared key encryption is a method where both parties
+share a key, kept secret by both parties. For example, sender A can
+encrypt a message with a shared key, then receiver B can decrypt the
+encrypted message only with that key.</p>
+</div>
+<div id="cryptography---symmetric-encryptiondecryption-1"
+class="slide section level2">
+<h1>Cryptography - Symmetric Encryption/Decryption</h1>
+<p><img src="images/symmetric_encryption.png" /></p>
+</div>
+<div id="cryptography---asymmetric-encryptiondecryption"
+class="slide section level2">
+<h1>Cryptography - Asymmetric Encryption/Decryption</h1>
+<p>Asymmetrical encryption uses a pair of mathematical related keys, one
+for encryption and the other for decryption. With public key
+cryptography, a user has a pair of public and private keys.</p>
+</div>
+<div id="cryptography---asymmetric-encryptiondecryption---keys"
+class="slide section level2">
+<h1>Cryptography - Asymmetric Encryption/Decryption - Keys</h1>
+<p>These are generated using a large prime number and a key function.
+The keys are related mathematically, but cannot be derived from one
+another.</p>
+<p><img src="images/250px-Public_key_making.png" /></p>
+</div>
+<div id="cryptography---asymmetric-encryptiondecryption-1"
+class="slide section level2">
+<h1>Cryptography - Asymmetric Encryption/Decryption</h1>
+<p>With these keys we can encrypt messages. For example, if Bob wants to
+send a message to Alice, he can encrypt a message using her public key.
+Alice can then decrypt this message using her private key. Only Alice
+can decrypt this message as she is the only one with the private
+key.</p>
+</div>
+<div id="cryptography---asymmetric-encryptiondecryption-2"
+class="slide section level2">
+<h1>Cryptography - Asymmetric Encryption/Decryption</h1>
+<p><img src="images/Public_key_encryption.png" /></p>
+</div>
+<div id="cryptography---asymmetric-signing"
+class="slide section level2">
+<h1>Cryptography - Asymmetric Signing</h1>
+<p>Messages can also be signed. This allows you to ensure the
+authenticity of the message. If Alice wants to send a message to Bob,
+and Bob wants to be sure that it is from Alice, Alice can sign the
+message using her private key. Bob can then verify that the message is
+from Alice by using her public key.</p>
+</div>
+<div id="cryptography---asymmetric-signing-1"
+class="slide section level2">
+<h1>Cryptography - Asymmetric Signing</h1>
+<p><img src="images/280px-Public_key_signing.png" /></p>
+</div>
+<div id="key-and-certificate-management-tool---keytool"
+class="slide section level2">
+<h1>Key and Certificate Management Tool - Keytool</h1>
+<ul>
+<li>Java includes the keytool utility in its releases.</li>
+<li>We can use <code>keytool</code> to manage keys and certificates and
+store them in a keystore.</li>
+<li>The <code>keytool</code> command allows us to create self-signed
+certificates and show information about the keystore</li>
+</ul>
+</div>
+<div id="apache-cxf---introduction" class="slide section level2">
+<h1>Apache CXF - Introduction</h1>
+<ul>
+<li>Apache CXF is an open source services framework.</li>
+<li>It supports multiple APIs like JAX-WS, JAX-RS.</li>
+<li>Compatible with protocols like SOAP, XML/HTTP, RESTful HTTP, and
+others</li>
+</ul>
+</div>
+<div id="apache-cxf---spring-boot-integration"
+class="slide section level2">
+<h1>Apache CXF - Spring Boot Integration</h1>
+<p><strong>Spring Boot</strong> makes it easy to create stand-alone,
+production-grade Spring based Applications that you can “just run”.</p>
+<p>To integrate CXF with Spring boot we need to add the following
+dependencies:
+<em>spring-boot-starter-web</em>,<em>cxf-spring-boot-starter-jaxws</em>,
+<em>cxf-rt-transports-http</em>, <em>cxf-rt-ws-security</em> and
+<em>cxf-rt-features-logging</em>.</p>
+</div>
+<div id="developing-a-soap-client---model-generation-wsdl-first"
+class="slide section level2">
+<h1>Developing a SOAP Client - Model generation (WSDL-first)</h1>
+<ol style="list-style-type: decimal">
+<li>Download the WSDL file and place it in the resources’ folder.</li>
+<li>Use the maven <em>cxf-codegen-plugin</em></li>
+</ol>
+<ul>
+<li>Configure the <em>bindingFile</em> for model generation.</li>
+<li>Configure the wsdlLocation.</li>
+<li>Set the output path with <em>extraargs</em></li>
+</ul>
+<ol start="3" style="list-style-type: decimal">
+<li>Use the <em>build-helper-maven-plugin</em> to add the generated
+source to the project.</li>
+</ol>
+</div>
+<div id="developing-a-soap-client---spring-boot-configuration"
+class="slide section level2">
+<h1>Developing a SOAP Client - Spring Boot Configuration</h1>
+<ol style="list-style-type: decimal">
+<li>Define in the <code>@Configuration</code> class a <code>@Bean</code>
+with the client implementation. It’s the class with the annotation
+<code>@WebServiceClient</code>.</li>
+<li>Create a <code>JaxWsProxyFactoryBean</code> for the client
+class.</li>
+<li>Assign Endpoint URL, and assign the Interceptors as needed.</li>
+</ol>
+</div>
+<div id="developing-an-endpoint---spring-boot-configuration"
+class="slide section level2">
+<h1>Developing an Endpoint - Spring Boot Configuration</h1>
+<p>If the WSDL already exists, follow the <em>WSDL-first</em> steps
+plus:</p>
+<ol style="list-style-type: decimal">
+<li>Define in the <code>@Configuration</code> class an
+<code>javax.xml.ws.Endpoint</code> implementation. It’s the interface
+with the annotation <code>@WebService</code>.</li>
+<li>Assign Endpoint URL, and Interceptors.</li>
+</ol>
+</div>
+<div id="how-to-use-ws-security" class="slide section level2">
+<h1>How to use WS-Security?</h1>
+</div>
+<div id="testing" class="slide section level2">
+<h1>Testing</h1>
+</div>
+<div id="references" class="slide section level2">
+<h1>References</h1>
+<ul>
+<li><a href="https://dev.java/learn/security/intro/">Introduction to
+Java Encryption/Decryption - Dev.java</a></li>
+<li><a href="https://cxf.apache.org/docs/ws-security.html">Apache CXF –
+WS-Security</a></li>
+</ul>
+</div>
+</body>
 </html>
