@@ -1,7 +1,7 @@
 ---
 author: Juan Moreno
 title: Apache CXF
-date: March 03, 2023
+date: April 10, 2023
 ---
 
 ## Agenda
@@ -51,9 +51,9 @@ With public key cryptography, a user has a pair of public and private keys.
 
 ![](images/250px-Public_key_making.png)
 
-With these keys we can encrypt messages. For example, if Bob wants to send a message to Alice, he can encrypt a message using her public key. Alice can then decrypt this message using her private key. Only Alice can decrypt this message as she is the only one with the private key.
-
 ## Cryptography - Asymmetric Encryption/Decryption
+
+With these keys we can encrypt messages. For example, if Bob wants to send a message to Alice, he can encrypt a message using her public key. Alice can then decrypt this message using her private key. Only Alice can decrypt this message as she is the only one with the private key.
 
 ![](images/Public_key_encryption.png)
 
@@ -145,7 +145,7 @@ cxfEndpoint.getOutInterceptors().add(wssOut);
 
 The X.509 Certificate Token Profile provides another option for implementing WS-Security. For the Signature and Encryption actions, we'll need to create a public & private key for the entities involved. We can generate a self-signed key pair for our development environment. Keep in mind these will not be signed by an external authority like Verisign, so are inappropriate for production use.
 
-## WS-Security - Signing - Client side
+## WS-Security - Signing - Client side 1/2
 On the client side, our outgoing WS-Security properties will look like so:
 
 ```java
@@ -160,6 +160,8 @@ The USER that is specified is the key alias for the client. The password callbac
 
 `outProps.put(WSHandlerConstants.ACTION, WSHandlerConstants.TIMESTAMP + " " + WSHandlerConstants.SIGNATURE + " " + WSHandlerConstants.ENCRYPT);`
 
+
+## WS-Security - Signing - Client side 2/2
 Our client_sign.properties file contains several settings to configure WSS4J:
 
 ```java

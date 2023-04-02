@@ -7,7 +7,7 @@
   <meta http-equiv="Content-Style-Type" content="text/css" />
   <meta name="generator" content="pandoc" />
   <meta name="author" content="Juan Moreno" />
-  <meta name="date" content="2023-03-03" />
+  <meta name="date" content="2023-04-10" />
   <title>Apache CXF</title>
   <style type="text/css">
     code{white-space: pre-wrap;}
@@ -98,7 +98,7 @@
   <p class="author">
 Juan Moreno
   </p>
-  <p class="date">March 03, 2023</p>
+  <p class="date">April 10, 2023</p>
 </div>
 <div id="agenda" class="slide section level2">
 <h1>Agenda</h1>
@@ -166,15 +166,15 @@ cryptography, a user has a pair of public and private keys.</p>
 and a key function. The keys are related mathematically, but cannot be
 derived from one another.</p>
 <p><img src="images/250px-Public_key_making.png" /></p>
+</div>
+<div id="cryptography---asymmetric-encryptiondecryption-1"
+class="slide section level2">
+<h1>Cryptography - Asymmetric Encryption/Decryption</h1>
 <p>With these keys we can encrypt messages. For example, if Bob wants to
 send a message to Alice, he can encrypt a message using her public key.
 Alice can then decrypt this message using her private key. Only Alice
 can decrypt this message as she is the only one with the private
 key.</p>
-</div>
-<div id="cryptography---asymmetric-encryptiondecryption-1"
-class="slide section level2">
-<h1>Cryptography - Asymmetric Encryption/Decryption</h1>
 <p><img src="images/Public_key_encryption.png" /></p>
 </div>
 <div id="cryptography---asymmetric-signing"
@@ -308,9 +308,9 @@ involved. We can generate a self-signed key pair for our development
 environment. Keep in mind these will not be signed by an external
 authority like Verisign, so are inappropriate for production use.</p>
 </div>
-<div id="ws-security---signing---client-side"
+<div id="ws-security---signing---client-side-12"
 class="slide section level2">
-<h1>WS-Security - Signing - Client side</h1>
+<h1>WS-Security - Signing - Client side 1/2</h1>
 <p>On the client side, our outgoing WS-Security properties will look
 like so:</p>
 <div class="sourceCode" id="cb2"><pre
@@ -325,6 +325,10 @@ password. For X.509 support you will normally have multiple actions,
 e.g. Encryption with Signature. For these cases, just space-separate the
 actions in the ACTION property as follows:</p>
 <p><code>outProps.put(WSHandlerConstants.ACTION, WSHandlerConstants.TIMESTAMP + " " + WSHandlerConstants.SIGNATURE + " " + WSHandlerConstants.ENCRYPT);</code></p>
+</div>
+<div id="ws-security---signing---client-side-22"
+class="slide section level2">
+<h1>WS-Security - Signing - Client side 2/2</h1>
 <p>Our client_sign.properties file contains several settings to
 configure WSS4J:</p>
 <div class="sourceCode" id="cb3"><pre
