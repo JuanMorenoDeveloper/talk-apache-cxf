@@ -22,6 +22,70 @@
       vertical-align: middle;
     }
     .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" type="text/css" media="screen, projection, print"
     href="https://www.w3.org/Talks/Tools/Slidy2/styles/slidy.css" />
@@ -35,10 +99,6 @@
 Juan Moreno
   </p>
   <p class="date">March 03, 2023</p>
-</div>
-<div id="apache-cxf" class="title-slide slide section level1">
-<h1>Apache CXF</h1>
-
 </div>
 <div id="agenda" class="slide section level2">
 <h1>Agenda</h1>
@@ -94,10 +154,6 @@ class="slide section level2">
 share a key, kept secret by both parties. For example, sender A can
 encrypt a message with a shared key, then receiver B can decrypt the
 encrypted message only with that key.</p>
-</div>
-<div id="cryptography---symmetric-encryptiondecryption-1"
-class="slide section level2">
-<h1>Cryptography - Symmetric Encryption/Decryption</h1>
 <p><img src="images/symmetric_encryption.png" /></p>
 </div>
 <div id="cryptography---asymmetric-encryptiondecryption"
@@ -106,25 +162,17 @@ class="slide section level2">
 <p>Asymmetrical encryption uses a pair of mathematical related keys, one
 for encryption and the other for decryption. With public key
 cryptography, a user has a pair of public and private keys.</p>
-</div>
-<div id="cryptography---asymmetric-encryptiondecryption---keys"
-class="slide section level2">
-<h1>Cryptography - Asymmetric Encryption/Decryption - Keys</h1>
-<p>These are generated using a large prime number and a key function.
-The keys are related mathematically, but cannot be derived from one
-another.</p>
+<p><strong>Keys</strong>: These are generated using a large prime number
+and a key function. The keys are related mathematically, but cannot be
+derived from one another.</p>
 <p><img src="images/250px-Public_key_making.png" /></p>
-</div>
-<div id="cryptography---asymmetric-encryptiondecryption-1"
-class="slide section level2">
-<h1>Cryptography - Asymmetric Encryption/Decryption</h1>
 <p>With these keys we can encrypt messages. For example, if Bob wants to
 send a message to Alice, he can encrypt a message using her public key.
 Alice can then decrypt this message using her private key. Only Alice
 can decrypt this message as she is the only one with the private
 key.</p>
 </div>
-<div id="cryptography---asymmetric-encryptiondecryption-2"
+<div id="cryptography---asymmetric-encryptiondecryption-1"
 class="slide section level2">
 <h1>Cryptography - Asymmetric Encryption/Decryption</h1>
 <p><img src="images/Public_key_encryption.png" /></p>
@@ -137,10 +185,6 @@ authenticity of the message. If Alice wants to send a message to Bob,
 and Bob wants to be sure that it is from Alice, Alice can sign the
 message using her private key. Bob can then verify that the message is
 from Alice by using her public key.</p>
-</div>
-<div id="cryptography---asymmetric-signing-1"
-class="slide section level2">
-<h1>Cryptography - Asymmetric Signing</h1>
 <p><img src="images/280px-Public_key_signing.png" /></p>
 </div>
 <div id="key-and-certificate-management-tool---keytool"
@@ -161,6 +205,8 @@ certificates and show information about the keystore</li>
 <li>It supports multiple APIs like JAX-WS, JAX-RS.</li>
 <li>Compatible with protocols like SOAP, XML/HTTP, RESTful HTTP, and
 others</li>
+<li>It has integrations with popular Java frameworks like Spring Boot
+(include in this training) and Quarkus.</li>
 </ul>
 </div>
 <div id="apache-cxf---spring-boot-integration"
@@ -215,11 +261,112 @@ with the annotation <code>@WebService</code>.</li>
 <li>Assign Endpoint URL, and Interceptors.</li>
 </ol>
 </div>
-<div id="how-to-use-ws-security" class="slide section level2">
-<h1>How to use WS-Security?</h1>
+<div id="ws-security---concepts" class="slide section level2">
+<h1>WS-Security - Concepts</h1>
+<p><strong>Web Services Security</strong> (WS-Security, WSS) is an
+extension to SOAP to apply security to Web services.</p>
+<p>Through a number of standards such as XML-Encryption, and headers
+defined in the WS-Security standard, it allows us to:</p>
+<ol style="list-style-type: decimal">
+<li>Encrypt messages or parts of messages</li>
+<li>Sign messages</li>
+<li>Timestamp messages</li>
+<li>Pass authentication tokens between services</li>
+<li>Manage public keys using XKMS</li>
+</ol>
+<p>We’ll cover the first three items using certificates. CXF relies on
+<strong>Apache WSS4J™</strong> in large part to implement
+WS-Security.</p>
+</div>
+<div id="ws-security---interceptors" class="slide section level2">
+<h1>WS-Security - Interceptors</h1>
+<p>To enable WS-Security within CXF for a server or a client, you’ll
+need to set up the WSS4J interceptors.</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode java"><code class="sourceCode java"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="kw">import</span> <span class="im">org</span><span class="op">.</span><span class="im">apache</span><span class="op">.</span><span class="im">cxf</span><span class="op">.</span><span class="im">ws</span><span class="op">.</span><span class="im">security</span><span class="op">.</span><span class="im">wss4j</span><span class="op">.</span><span class="im">WSS4JInInterceptor</span><span class="op">;</span></span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a><span class="kw">import</span> <span class="im">org</span><span class="op">.</span><span class="im">apache</span><span class="op">.</span><span class="im">cxf</span><span class="op">.</span><span class="im">ws</span><span class="op">.</span><span class="im">security</span><span class="op">.</span><span class="im">wss4j</span><span class="op">.</span><span class="im">WSS4JOutInterceptor</span><span class="op">;</span></span>
+<span id="cb1-3"><a href="#cb1-3" tabindex="-1"></a><span class="kw">...</span></span>
+<span id="cb1-4"><a href="#cb1-4" tabindex="-1"></a> </span>
+<span id="cb1-5"><a href="#cb1-5" tabindex="-1"></a><span class="bu">Map</span><span class="op">&lt;</span><span class="bu">String</span><span class="op">,</span><span class="bu">Object</span><span class="op">&gt;</span> inProps <span class="op">=</span> <span class="kw">new</span> <span class="bu">HashMap</span><span class="op">&lt;</span><span class="bu">String</span><span class="op">,</span><span class="bu">Object</span><span class="op">&gt;();</span></span>
+<span id="cb1-6"><a href="#cb1-6" tabindex="-1"></a><span class="kw">...</span> <span class="co">// how to configure the properties is outlined below;</span></span>
+<span id="cb1-7"><a href="#cb1-7" tabindex="-1"></a> </span>
+<span id="cb1-8"><a href="#cb1-8" tabindex="-1"></a>WSS4JInInterceptor wssIn <span class="op">=</span> <span class="kw">new</span> <span class="fu">WSS4JInInterceptor</span><span class="op">(</span>inProps<span class="op">);</span></span>
+<span id="cb1-9"><a href="#cb1-9" tabindex="-1"></a>cxfEndpoint<span class="op">.</span><span class="fu">getInInterceptors</span><span class="op">().</span><span class="fu">add</span><span class="op">(</span>wssIn<span class="op">);</span></span>
+<span id="cb1-10"><a href="#cb1-10" tabindex="-1"></a> </span>
+<span id="cb1-11"><a href="#cb1-11" tabindex="-1"></a><span class="bu">Map</span><span class="op">&lt;</span><span class="bu">String</span><span class="op">,</span><span class="bu">Object</span><span class="op">&gt;</span> outProps <span class="op">=</span> <span class="kw">new</span> <span class="bu">HashMap</span><span class="op">&lt;</span><span class="bu">String</span><span class="op">,</span><span class="bu">Object</span><span class="op">&gt;();</span></span>
+<span id="cb1-12"><a href="#cb1-12" tabindex="-1"></a><span class="kw">...</span> <span class="co">// how to configure the properties is outlined below;</span></span>
+<span id="cb1-13"><a href="#cb1-13" tabindex="-1"></a> </span>
+<span id="cb1-14"><a href="#cb1-14" tabindex="-1"></a>WSS4JOutInterceptor wssOut <span class="op">=</span> <span class="kw">new</span> <span class="fu">WSS4JOutInterceptor</span><span class="op">(</span>outProps<span class="op">);</span></span>
+<span id="cb1-15"><a href="#cb1-15" tabindex="-1"></a>cxfEndpoint<span class="op">.</span><span class="fu">getOutInterceptors</span><span class="op">().</span><span class="fu">add</span><span class="op">(</span>wssOut<span class="op">);</span></span></code></pre></div>
+</div>
+<div id="ws-security---x.509-certificates" class="slide section level2">
+<h1>WS-Security - X.509 Certificates</h1>
+<p>The X.509 Certificate Token Profile provides another option for
+implementing WS-Security. For the Signature and Encryption actions,
+we’ll need to create a public &amp; private key for the entities
+involved. We can generate a self-signed key pair for our development
+environment. Keep in mind these will not be signed by an external
+authority like Verisign, so are inappropriate for production use.</p>
+</div>
+<div id="ws-security---signing---client-side"
+class="slide section level2">
+<h1>WS-Security - Signing - Client side</h1>
+<p>On the client side, our outgoing WS-Security properties will look
+like so:</p>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode java"><code class="sourceCode java"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a>outProps<span class="op">.</span><span class="fu">put</span><span class="op">(</span>WSHandlerConstants<span class="op">.</span><span class="fu">ACTION</span><span class="op">,</span> <span class="st">&quot;Signature&quot;</span><span class="op">);</span></span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a>outProps<span class="op">.</span><span class="fu">put</span><span class="op">(</span>WSHandlerConstants<span class="op">.</span><span class="fu">USER</span><span class="op">,</span> <span class="st">&quot;myAlias&quot;</span><span class="op">);</span></span>
+<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a>outProps<span class="op">.</span><span class="fu">put</span><span class="op">(</span>WSHandlerConstants<span class="op">.</span><span class="fu">PW_CALLBACK_CLASS</span><span class="op">,</span></span>
+<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a>ClientCallbackHandler<span class="op">.</span><span class="fu">class</span><span class="op">.</span><span class="fu">getName</span><span class="op">());</span></span>
+<span id="cb2-5"><a href="#cb2-5" tabindex="-1"></a>outProps<span class="op">.</span><span class="fu">put</span><span class="op">(</span>WSHandlerConstants<span class="op">.</span><span class="fu">SIG_PROP_FILE</span><span class="op">,</span> <span class="st">&quot;client_sign.properties&quot;</span><span class="op">);</span></span></code></pre></div>
+<p>The USER that is specified is the key alias for the client. The
+password callback class is responsible for providing that key’s
+password. For X.509 support you will normally have multiple actions,
+e.g. Encryption with Signature. For these cases, just space-separate the
+actions in the ACTION property as follows:</p>
+<p><code>outProps.put(WSHandlerConstants.ACTION, WSHandlerConstants.TIMESTAMP + " " + WSHandlerConstants.SIGNATURE + " " + WSHandlerConstants.ENCRYPT);</code></p>
+<p>Our client_sign.properties file contains several settings to
+configure WSS4J:</p>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode java"><code class="sourceCode java"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a>org<span class="op">.</span><span class="fu">apache</span><span class="op">.</span><span class="fu">ws</span><span class="op">.</span><span class="fu">security</span><span class="op">.</span><span class="fu">crypto</span><span class="op">.</span><span class="fu">provider</span><span class="op">=</span>org<span class="op">.</span><span class="fu">apache</span><span class="op">.</span><span class="fu">ws</span><span class="op">.</span><span class="fu">security</span><span class="op">.</span><span class="fu">components</span><span class="op">.</span><span class="fu">crypto</span><span class="op">.</span><span class="fu">Merlin</span></span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a>org<span class="op">.</span><span class="fu">apache</span><span class="op">.</span><span class="fu">ws</span><span class="op">.</span><span class="fu">security</span><span class="op">.</span><span class="fu">crypto</span><span class="op">.</span><span class="fu">merlin</span><span class="op">.</span><span class="fu">keystore</span><span class="op">.</span><span class="fu">type</span><span class="op">=</span>jks</span>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a>org<span class="op">.</span><span class="fu">apache</span><span class="op">.</span><span class="fu">ws</span><span class="op">.</span><span class="fu">security</span><span class="op">.</span><span class="fu">crypto</span><span class="op">.</span><span class="fu">merlin</span><span class="op">.</span><span class="fu">keystore</span><span class="op">.</span><span class="fu">password</span><span class="op">=</span>keyStorePassword</span>
+<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a>org<span class="op">.</span><span class="fu">apache</span><span class="op">.</span><span class="fu">ws</span><span class="op">.</span><span class="fu">security</span><span class="op">.</span><span class="fu">crypto</span><span class="op">.</span><span class="fu">merlin</span><span class="op">.</span><span class="fu">keystore</span><span class="op">.</span><span class="fu">alias</span><span class="op">=</span>myAlias</span>
+<span id="cb3-5"><a href="#cb3-5" tabindex="-1"></a>org<span class="op">.</span><span class="fu">apache</span><span class="op">.</span><span class="fu">ws</span><span class="op">.</span><span class="fu">security</span><span class="op">.</span><span class="fu">crypto</span><span class="op">.</span><span class="fu">merlin</span><span class="op">.</span><span class="fu">keystore</span><span class="op">.</span><span class="fu">file</span><span class="op">=</span>client_keystore<span class="op">.</span><span class="fu">jks</span></span></code></pre></div>
+</div>
+<div id="ws-security---signing---server-side"
+class="slide section level2">
+<h1>WS-Security - Signing - Server side</h1>
+<p>On the server side, we need to configure our incoming WSS4J
+interceptor to verify the signature using the Client’s public key.</p>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode java"><code class="sourceCode java"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a>inProps<span class="op">.</span><span class="fu">put</span><span class="op">(</span>WSHandlerConstants<span class="op">.</span><span class="fu">ACTION</span><span class="op">,</span> <span class="st">&quot;Signature&quot;</span><span class="op">);</span></span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a>inProps<span class="op">.</span><span class="fu">put</span><span class="op">(</span>WSHandlerConstants<span class="op">.</span><span class="fu">SIG_PROP_FILE</span><span class="op">,</span> <span class="st">&quot;server.properties&quot;</span><span class="op">);</span></span></code></pre></div>
+<p>Our server_sign.properties file contains several settings to
+configure WSS4J:</p>
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode java"><code class="sourceCode java"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a>org<span class="op">.</span><span class="fu">apache</span><span class="op">.</span><span class="fu">ws</span><span class="op">.</span><span class="fu">security</span><span class="op">.</span><span class="fu">crypto</span><span class="op">.</span><span class="fu">provider</span><span class="op">=</span>org<span class="op">.</span><span class="fu">apache</span><span class="op">.</span><span class="fu">ws</span><span class="op">.</span><span class="fu">security</span><span class="op">.</span><span class="fu">components</span><span class="op">.</span><span class="fu">crypto</span><span class="op">.</span><span class="fu">Merlin</span></span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a>org<span class="op">.</span><span class="fu">apache</span><span class="op">.</span><span class="fu">ws</span><span class="op">.</span><span class="fu">security</span><span class="op">.</span><span class="fu">crypto</span><span class="op">.</span><span class="fu">merlin</span><span class="op">.</span><span class="fu">keystore</span><span class="op">.</span><span class="fu">type</span><span class="op">=</span>jks</span>
+<span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a>org<span class="op">.</span><span class="fu">apache</span><span class="op">.</span><span class="fu">ws</span><span class="op">.</span><span class="fu">security</span><span class="op">.</span><span class="fu">crypto</span><span class="op">.</span><span class="fu">merlin</span><span class="op">.</span><span class="fu">keystore</span><span class="op">.</span><span class="fu">password</span><span class="op">=</span>amex123</span>
+<span id="cb5-4"><a href="#cb5-4" tabindex="-1"></a>org<span class="op">.</span><span class="fu">apache</span><span class="op">.</span><span class="fu">ws</span><span class="op">.</span><span class="fu">security</span><span class="op">.</span><span class="fu">crypto</span><span class="op">.</span><span class="fu">merlin</span><span class="op">.</span><span class="fu">keystore</span><span class="op">.</span><span class="fu">file</span><span class="op">=</span>server_keystore<span class="op">.</span><span class="fu">jks</span></span></code></pre></div>
+</div>
+<div id="ws-security---encryption" class="slide section level2">
+<h1>WS-Security - Encryption</h1>
+<p>Encryption involves the sender encrypting the message with the
+recipient’s public key to ensure that only the recipient can read the
+message (only the recipient has its own private key, necessary for
+decrypting the message.) This requires the sender to have the
+recipient’s public key in its keystore.</p>
+<p>The process for encrypting is very similar to and indeed usually
+combined with the signature one.</p>
 </div>
 <div id="testing" class="slide section level2">
 <h1>Testing</h1>
+<ul>
+<li>Functional test with SOAP UI.</li>
+<li>Integration test with <code>@SpringBootTest</code> and
+MockServer.</li>
+</ul>
 </div>
 <div id="references" class="slide section level2">
 <h1>References</h1>
@@ -228,6 +375,17 @@ with the annotation <code>@WebService</code>.</li>
 Java Encryption/Decryption - Dev.java</a></li>
 <li><a href="https://cxf.apache.org/docs/ws-security.html">Apache CXF –
 WS-Security</a></li>
+<li><a
+href="https://docs.spring.io/spring-boot/docs/current/reference/html/">Spring
+Boot Reference Documentation</a></li>
+<li><a href="https://ws.apache.org/wss4j/best_practice.html">Security
+Best Practices</a></li>
+<li><a
+href="https://www.soapui.org/docs/soapui-projects/ws-security/">WS-Security
+(WSS) for API Testing | SoapUI</a></li>
+<li><a
+href="https://www.mock-server.com/mock_server/running_mock_server.html#junit_test_extension">Running
+MockServer via a JUnit 5 Test Extension</a></li>
 </ul>
 </div>
 </body>
