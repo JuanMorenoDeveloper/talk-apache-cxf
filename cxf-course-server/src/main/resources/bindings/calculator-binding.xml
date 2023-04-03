@@ -2,7 +2,8 @@
 <jaxws:bindings xmlns:jaxws="https://jakarta.ee/xml/ns/jaxws"
   xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:jxb="https://jakarta.ee/xml/ns/jaxb"
   xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" wsdlLocation="../wsdl/calculator.wsdl">
-  <jaxws:bindings node="wsdl:definitions/wsdl:types/xs:schema[@targetNamespace='http://tempuri.org/']">
+  <jaxws:bindings
+    node="wsdl:definitions/wsdl:types/xs:schema[@targetNamespace='http://tempuri.org/']">
     <!-- Para evitar la generación de elementos con JAXBElements, pues no se necesita y además rompe la integración con Jackson. -->
     <jxb:globalBindings generateElementProperty="false"/>
   </jaxws:bindings>
