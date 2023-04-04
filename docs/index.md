@@ -65,9 +65,26 @@ Messages can also be signed. This allows you to ensure the authenticity of the m
 
 ## Key and Certificate Management Tool - Keytool
 
-* Java includes the keytool utility in its releases.
+* Java includes the keytool utility in its releases. Another popular tool is `openssl` but which is not part of JDK.
 * We can use `keytool` to manage keys and certificates and store them in a keystore. 
 * The `keytool` command allows us to create self-signed certificates and show information about the keystore
+
+```bash
+# Generate test certificate
+keytool -genkeypair -alias alice -keyalg RSA -keysize 2048 -dname "cn=CN, ou=OU, o=O, c=C" -validity 730 -storetype pkcs12 -keystore alice.p12 -keypass alice! -storepass alice! -v
+# Export public key
+keytool -export -rfc -keystore alice.p12 -alias alice -file alice.pem -storepass alice!
+# Show certificate info
+keytool -list -v -srcstoretype pkcs12 -J-Duser.language=en  -keystore alice.p12 -storepass alice!
+# Create truststore
+keytool -import -file alice.pem -alias alice -srcstoretype pkcs12 -keystore alice_trust.p12 -storepass alice! -J-Duser.language=en
+# Convert PEM (pem/txt) to crt x509 (binary)
+openssl x509 -inform PEM -in test_certificate.pem -out test_certificate.crt -outform DER
+# Convert crt x509 (binary) to cer (pem/txt)
+openssl x509 -inform DER -in certificate.cer -out certificate.pem
+# Show certificate PEM info
+openssl x509 -in certificate.pem -text
+```
 
 ## Apache CXF - Introduction
 
@@ -93,7 +110,8 @@ To integrate CXF with Spring boot we need to add the following dependencies: _sp
 
 ## Developing a SOAP Client - Spring Boot Configuration
 
-1. Define in the `@Configuration` class a `@Bean` with the client implementation. It's the class with the annotation `@WebServiceClient`.
+1. Define in the `@Configuration` class a `@Bean` with the client implementation. It's the interface with the annotation `@WebService`.
+2. Optional. If you want to use the client without CXF you need to use the class with the annotation `@WebServiceClient`.
 2. Create a `JaxWsProxyFactoryBean` for the client class.
 3. Assign Endpoint URL, and assign the Interceptors as needed. 
 

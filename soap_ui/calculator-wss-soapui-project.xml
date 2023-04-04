@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="7f422289-96a3-4a7e-abaa-a9356022a5f4" activeEnvironment="Default" name="calculator_wss" resourceRoot="" soapui-version="5.7.0" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="c5953db5-1b72-42c7-ace2-c7a774184bc8" wsaVersion="NONE" name="CalculatorControllerServiceSoapBinding" type="wsdl" bindingName="{http://controller.cxf.proitcsolution.com.ve/}CalculatorControllerServiceSoapBinding" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/services/calculator?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:8080/services/calculator?wsdl"><con:part><con:url>http://localhost:8080/services/calculator?wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="CalculatorControllerService" targetNamespace="http://controller.cxf.proitcsolution.com.ve/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://controller.cxf.proitcsolution.com.ve/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns2="http://schemas.xmlsoap.org/soap/http" xmlns:ns1="http://tempuri.org/">
+  <wsdl:import location="http://localhost:8080/services/calculator?wsdl=CalculatorSoap.wsdl" namespace="http://tempuri.org/"></wsdl:import>
+  <wsdl:binding name="CalculatorControllerServiceSoapBinding" type="ns1:CalculatorSoap">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="Divide">
+      <soap:operation soapAction="http://tempuri.org/Divide" style="document"/>
+      <wsdl:input name="Divide">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="DivideResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Subtract">
+      <soap:operation soapAction="http://tempuri.org/Subtract" style="document"/>
+      <wsdl:input name="Subtract">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="SubtractResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Add">
+      <soap:operation soapAction="http://tempuri.org/Add" style="document"/>
+      <wsdl:input name="Add">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="AddResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Multiply">
+      <soap:operation soapAction="http://tempuri.org/Multiply" style="document"/>
+      <wsdl:input name="Multiply">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="MultiplyResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CalculatorControllerService">
+    <wsdl:port binding="tns:CalculatorControllerServiceSoapBinding" name="CalculatorControllerPort">
+      <soap:address location="http://localhost:8080/services/calculator"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part><con:part><con:url>http://localhost:8080/services/calculator?wsdl=CalculatorSoap.wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="CalculatorSoap" targetNamespace="http://tempuri.org/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns1="http://tempuri.org/">
+  <wsdl:types>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="Add">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="intA" type="xs:int"/>
+            <xs:element name="intB" type="xs:int"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="AddResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="AddResult" type="xs:int"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="Divide">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="intA" type="xs:int"/>
+            <xs:element name="intB" type="xs:int"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="DivideResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="DivideResult" type="xs:int"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="Multiply">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="intA" type="xs:int"/>
+            <xs:element name="intB" type="xs:int"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="MultiplyResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="MultiplyResult" type="xs:int"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="Subtract">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="intA" type="xs:int"/>
+            <xs:element name="intB" type="xs:int"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="SubtractResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="SubtractResult" type="xs:int"/>
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="SubtractResponse">
+    <wsdl:part element="ns1:SubtractResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="DivideResponse">
+    <wsdl:part element="ns1:DivideResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="MultiplyResponse">
+    <wsdl:part element="ns1:MultiplyResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="Divide">
+    <wsdl:part element="ns1:Divide" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="Add">
+    <wsdl:part element="ns1:Add" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="Multiply">
+    <wsdl:part element="ns1:Multiply" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="Subtract">
+    <wsdl:part element="ns1:Subtract" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AddResponse">
+    <wsdl:part element="ns1:AddResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="CalculatorSoap">
+    <wsdl:operation name="Divide">
+      <wsdl:input message="ns1:Divide" name="Divide"></wsdl:input>
+      <wsdl:output message="ns1:DivideResponse" name="DivideResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Subtract">
+      <wsdl:input message="ns1:Subtract" name="Subtract"></wsdl:input>
+      <wsdl:output message="ns1:SubtractResponse" name="SubtractResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Add">
+      <wsdl:input message="ns1:Add" name="Add"></wsdl:input>
+      <wsdl:output message="ns1:AddResponse" name="AddResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Multiply">
+      <wsdl:input message="ns1:Multiply" name="Multiply"></wsdl:input>
+      <wsdl:output message="ns1:MultiplyResponse" name="MultiplyResponse"></wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8080/services/calculator</con:endpoint></con:endpoints><con:operation id="3ce8100d-215e-4764-9c47-be57d7425847" isOneWay="false" action="http://tempuri.org/Add" name="Add" bindingOperationName="Add" type="Request-Response" outputName="AddResponse" inputName="Add" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="1e543474-b31f-42b0-aa04-e91b083b5531" name="Request 1" outgoingWss="bob" incomingWss="bob"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/services/calculator</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <tem:Add>\r
+         <tem:intA>2</tem:intA>\r
+         <tem:intB>3</tem:intB>\r
+      </tem:Add>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://tempuri.org/Add"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="2466a21b-db6b-4815-84f6-7c4a0b985834" isOneWay="false" action="http://tempuri.org/Divide" name="Divide" bindingOperationName="Divide" type="Request-Response" outputName="DivideResponse" inputName="Divide" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="a62ca080-3cfa-4a91-93dd-2c1a821fae75" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/services/calculator</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <tem:Divide>\r
+         <tem:intA>?</tem:intA>\r
+         <tem:intB>?</tem:intB>\r
+      </tem:Divide>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://tempuri.org/Divide"/></con:call></con:operation><con:operation id="7b521684-5552-4c42-b1d7-3fe958536a81" isOneWay="false" action="http://tempuri.org/Multiply" name="Multiply" bindingOperationName="Multiply" type="Request-Response" outputName="MultiplyResponse" inputName="Multiply" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="aa24f510-1525-46a9-a121-2258dcff380e" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/services/calculator</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <tem:Multiply>\r
+         <tem:intA>?</tem:intA>\r
+         <tem:intB>?</tem:intB>\r
+      </tem:Multiply>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://tempuri.org/Multiply"/></con:call></con:operation><con:operation id="d59df13c-2a85-4346-9ffc-d9b27baee27d" isOneWay="false" action="http://tempuri.org/Subtract" name="Subtract" bindingOperationName="Subtract" type="Request-Response" outputName="SubtractResponse" inputName="Subtract" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="2c37a2e7-4b93-44a2-8c6f-3631082fa966" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/services/calculator</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <tem:Subtract>\r
+         <tem:intA>?</tem:intA>\r
+         <tem:intB>?</tem:intB>\r
+      </tem:Subtract>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://tempuri.org/Subtract"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer><con:crypto><con:source>D:/Dev/talk-apache-cxf/cxf-course-server/src/main/resources/certs/alice.p12</con:source><con:password>alice!</con:password><con:type>KEYSTORE</con:type><con:defaultAlias>alias</con:defaultAlias></con:crypto><con:crypto><con:source>D:/Dev/talk-apache-cxf/cxf-course-server/src/main/resources/certs/bob.p12</con:source><con:password>bob!!!</con:password><con:type>KEYSTORE</con:type><con:defaultAlias>bob</con:defaultAlias></con:crypto><con:crypto><con:source>D:/Dev/talk-apache-cxf/cxf-course-server/src/main/resources/certs/alice_trust.p12</con:source><con:password>alice!</con:password><con:type>TRUSTSTORE</con:type><con:defaultAlias>alice</con:defaultAlias></con:crypto><con:crypto><con:source>D:/Dev/talk-apache-cxf/cxf-course-server/src/main/resources/certs/bob_trust.p12</con:source><con:password>bob!!!</con:password><con:type>TRUSTSTORE</con:type><con:defaultAlias>bob</con:defaultAlias></con:crypto><con:incoming><con:name>bob</con:name><con:decryptCrypto>bob.p12</con:decryptCrypto><con:signatureCrypto>alice_trust.p12</con:signatureCrypto></con:incoming><con:outgoing><con:name>bob</con:name><con:entry type="Signature" username="bob" password="bob!!!"><con:configuration><crypto>bob.p12</crypto><keyIdentifierType>2</keyIdentifierType><signatureAlgorithm/><signatureCanonicalization/><useSingleCert>true</useSingleCert><prependSignature>false</prependSignature><digestAlgorithm/><customTokenValueType/><customTokenId/></con:configuration></con:entry><con:entry type="Encryption" username="alice" password="alice!"><con:configuration><crypto>alice.p12</crypto><keyIdentifierType>2</keyIdentifierType><symmetricEncAlgorithm/><encKeyTransport/><embeddedKeyName/><embeddedKeyPassword/><encryptionCanonicalization/><encryptSymmetricKey>true</encryptSymmetricKey></con:configuration></con:entry></con:outgoing></con:wssContainer><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/><con:sensitiveInformation/></con:soapui-project>
