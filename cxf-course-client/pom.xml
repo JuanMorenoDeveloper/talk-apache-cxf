@@ -92,7 +92,7 @@
             </goals>
             <configuration>
               <sources>
-                <source>${basedir}/src/main/generated/cxf</source>
+                <source>${basedir}/src/main/generated-sources/cxf</source>
               </sources>
             </configuration>
           </execution>
