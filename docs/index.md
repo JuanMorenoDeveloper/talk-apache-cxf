@@ -226,3 +226,10 @@ The process for encrypting is very similar to and indeed usually combined with t
 * [Security Best Practices](https://ws.apache.org/wss4j/best_practice.html)
 * [WS-Security (WSS) for API Testing | SoapUI](https://www.soapui.org/docs/soapui-projects/ws-security/)
 * [Running MockServer via a JUnit 5 Test Extension](https://www.mock-server.com/mock_server/running_mock_server.html#junit_test_extension)
+
+## Sample projects & documentation
+
+* https://github.com/JuanMorenoDeveloper/talk-apache-cxf
+* https://bit.ly/talk-apache-cxf 
+
+![](images/qr.png)
