@@ -12,21 +12,21 @@ import ve.com.proitcsolution.cxf.controller.CalculatorController;
 @ConditionalOnProperty(prefix = "calculator", name = "mode", havingValue = "plain")
 public class CxfConfigurationPlain {
 
-    private final CalculatorConfig config;
-    private final Bus bus;
+  private final CalculatorConfig config;
+  private final Bus bus;
 
-    public CxfConfigurationPlain(CalculatorConfig config, Bus bus) {
-        this.config = config;
-        this.bus = bus;
-    }
+  public CxfConfigurationPlain(CalculatorConfig config, Bus bus) {
+    this.config = config;
+    this.bus = bus;
+  }
 
-    @Bean
-    public Endpoint calculatorSoap() {
-        var endpoint = new EndpointImpl(bus, new CalculatorController());
-        String endpointUrl = config.path();
-        String wsdlLocation = config.wsdlLocation();
-        endpoint.publish(endpointUrl);
-        endpoint.setWsdlLocation(wsdlLocation);
-        return endpoint;
-    }
+  @Bean
+  public Endpoint calculatorSoap() {
+    var endpoint = new EndpointImpl(bus, new CalculatorController());
+    String endpointUrl = config.path();
+    String wsdlLocation = config.wsdlLocation();
+    endpoint.publish(endpointUrl);
+    endpoint.setWsdlLocation(wsdlLocation);
+    return endpoint;
+  }
 }

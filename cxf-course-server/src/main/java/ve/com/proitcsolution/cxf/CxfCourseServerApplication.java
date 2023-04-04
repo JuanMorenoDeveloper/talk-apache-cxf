@@ -6,10 +6,9 @@ import org.springframework.boot.context.properties.ConfigurationPropertiesScan;
 
 @SpringBootApplication
 @ConfigurationPropertiesScan
-public class CxfCourseApplication {
+public class CxfCourseServerApplication {
 
-    public static void main(String[] args) {
-        SpringApplication.run(CxfCourseApplication.class, args);
-    }
-
+  public static void main(String[] args) {
+    SpringApplication.run(CxfCourseServerApplication.class, args);
+  }
 }

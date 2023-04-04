@@ -11,5 +11,4 @@ public class CxfCourseApplication {
   public static void main(String[] args) {
     SpringApplication.run(CxfCourseApplication.class, args);
   }
-
 }
