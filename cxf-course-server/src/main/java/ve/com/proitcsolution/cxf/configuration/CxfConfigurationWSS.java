@@ -97,7 +97,7 @@ public class CxfConfigurationWSS {
 
   public Map<String, Object> encryptionProperties(
       final Properties encProp, final Properties decProp) {
-    final Map<String, Object> properties = new HashMap<>();
+    var properties = new HashMap<String, Object>();
     properties.put("encryptionProperties", encProp);
     properties.put("decryptionProperties", decProp);
     properties.put(ConfigurationConstants.ENC_PROP_REF_ID, "encryptionProperties");
