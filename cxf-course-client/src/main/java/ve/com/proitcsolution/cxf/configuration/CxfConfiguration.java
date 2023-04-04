@@ -123,7 +123,7 @@ public class CxfConfiguration {
             .generateCertificate(getClass().getClassLoader().getResourceAsStream(config.sslFile()));
     var keyStore = KeyStore.getInstance(KeyStore.getDefaultType());
     keyStore.load(null, null);
-    keyStore.setCertificateEntry("ws.stm.gub.uy", certificate);
+    keyStore.setCertificateEntry("calculator", certificate);
     var trustManagerFactory =
         TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
     trustManagerFactory.init(keyStore);
