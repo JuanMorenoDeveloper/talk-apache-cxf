@@ -14,6 +14,8 @@
   <description>Demo client project for Spring Boot and Apache CXF</description>
   <properties>
     <java.version>17</java.version>
+    <mockserver.version>5.15.0</mockserver.version>
+    <maven-failsafe-plugin.version>3.0.0</maven-failsafe-plugin.version>
   </properties>
   <dependencies>
     <dependency>
@@ -40,6 +42,12 @@
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-test</artifactId>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.mock-server</groupId>
+      <artifactId>mockserver-junit-jupiter-no-dependencies</artifactId>
+      <version>${mockserver.version}</version>
       <scope>test</scope>
     </dependency>
   </dependencies>
@@ -97,6 +105,11 @@
             </configuration>
           </execution>
         </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-failsafe-plugin</artifactId>
+        <version>${maven-failsafe-plugin.version}</version>
       </plugin>
     </plugins>
   </build>
